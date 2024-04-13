@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-#define DEBUG 1
+#define DEBUG 0
 
 #define LED_COUNT 30
 #define LED_PIN 26
@@ -56,10 +56,20 @@ BLYNK_WRITE(V4)
   }
 }
 
+
+BLYNK_CONNECTED()
+{
+  Blynk.syncAll();
+}
+
+
 void clear(){
   strip.clear(); // Set all pixel colors to 'off'
   strip.show();
 }
+
+
+
 void rainbow()
 {
   unsigned long currentMillis = millis(); // Get the current time
